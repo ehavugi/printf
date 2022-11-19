@@ -12,7 +12,7 @@ int _printf(const char *str, ...)
 {
 	int index = 0;
 	va_list ptr;
-	va_start(prt,0);
+	va_start(ptr,0);
 	/* int f_index = 0; */
 
 	while (str[index] != '\0')
@@ -33,6 +33,11 @@ int _printf(const char *str, ...)
 			{
 				_puts(va_arg(ptr,char*));
 				index += 2;
+			}
+			else
+			{
+				_putchar(str[index]);
+				index += 1;
 			}
 			continue;
 		}
