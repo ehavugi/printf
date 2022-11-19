@@ -21,7 +21,7 @@ int _printf(const char *str, ...)
 		{
 			if (str[index+1] == 'd' || str[index+1] == 'i')
 			{
-				printf("%d",va_arg(ptr,int));
+				print_int(va_arg(ptr,int));
 				index += 2;
 			}
 			else if (str[index+1] == 'c' || str[index+1] == 'C')
