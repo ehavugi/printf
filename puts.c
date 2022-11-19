@@ -5,11 +5,15 @@
   * @str: pointer to a string
   */
 
-void _puts(char *str)
+int _puts(char *str)
 {
+	int len = 0;
+
 	while (*str != '\0')
 	{
 		_putchar(*str + 0);
+		len++;
 		++str;
 	}
+	return (len);
 }
