@@ -1,19 +1,6 @@
-#include <unistd.h>
+#include "main.h"
 #include <stdarg.h>
 #include <stdlib.h>
-
-
-/**
- * _putchar - putchar 
- * @c: char
- * 
- * Return: int
- */
-
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
 
 /**
  * _printf - printf
@@ -24,30 +11,30 @@ int _putchar(char c)
 int _printf(const char *str, ...)
 {
 	int index = 0;
-	int check_next = 0;
+	va_list ptr;
+	va_start(prt,0);
 	/* int f_index = 0; */
 
 	while (str[index] != '\0')
 	{
-		/*Is it a start of a format string? if so wait for next char */
 		if (str[index] == '%')
 		{
-			check_next = 1;
-		}
-		else if (check_next == 1)
-		{
-			/*intrepret each format string following % and clear check_next flag */
-			if (str[index] == 's')
+			if (str[index+1] == 'd' || str[index+1] == 'i')
 			{
-				_putchar(str[index - 1]); /*to be removed */
-				_putchar(str[index]);
+				printf("%d",va_arg(ptr,int));
+				index += 2;
 			}
-			else
-			{ /*if the format string is not supported print it as it is */
-				_putchar(str[index - 1]);
-				_putchar(str[index]);
+			else if (str[index+1] == 'c' || str[index+1] == 'C')
+			{
+				_putchar(va_arg(ptr,int));
+				index += 2;
 			}
-			check_next = 0;
+			else if (str[index+1] == 's' || str[index+1] == 'S')
+			{
+				_puts(va_arg(ptr,char*));
+				index += 2;
+			}
+			continue;
 		}
 		else
 		{
