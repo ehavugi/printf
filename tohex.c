@@ -49,14 +49,16 @@ int toHexBig(int d)
 
 int pointerToHex(int d, int len)
 {
+	int i ;
+	int rem;
     if(d/16 == 0)
     {
-        --len;
+	--len;
 
         if (d%16 > 9)
         {
-            int rem = (d%16) - 10;
-            for (int i= len;i > 0; i--)
+            rem = (d%16) - 10;
+	    for (i = len;i > 0; i--)
             {
                 _putchar('0');
                 len--;
@@ -65,7 +67,7 @@ int pointerToHex(int d, int len)
         }
         else
         {
-            for (int i= len;i > 0; i--)
+            for (i= len;i > 0; i--)
             {
                 _putchar('0');
                 len--;
@@ -79,7 +81,7 @@ int pointerToHex(int d, int len)
         pointerToHex(d/16, --len);
         if (d%16 > 9)
         {
-            int rem = (d%16) - 10;
+            rem = (d%16) - 10;
             _putchar(rem + 'A');
         }
         else
