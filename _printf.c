@@ -64,6 +64,11 @@ int _printf(const char *str, ...)
 				len += _puts(va_arg(ptr, char*));
 				index += 2;
 			}
+			else if (str[index + 1] == 'r')
+			{
+				len += conv_r(va_arg(ptr, char *));
+				index += 2;
+			}
 			else
 			{
 				len += _putchar(str[index]);

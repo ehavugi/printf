@@ -34,12 +34,19 @@ int main(void)
     len2 = printf("String :[%s] %c,%c,\n", "I am a string!	23",11,130);
     _printf("Length 2: [%d, %i]\n", len, len);
     printf("Length 2: [%d, %i]\n", len2, len2); 
+    
     _printf("Address:[%p]\n", addr);
     printf("Address:[%p]\n", addr);
+    
     len = _printf("Percent:[%%]\n");
     len2 = printf("Percent:[%%]\n");
+    
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
+    
+    _printf("strings reverse %r\n", "hello");
+    printf("strings reverse %rs\n", "hello");
+    
     _printf("Unknown:[%r]\n");
     printf("Unknown:[%r]\n");
     return (0);

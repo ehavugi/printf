@@ -13,5 +13,6 @@ int toHexBig(int d);
 int pointerToHex(int d, int len);
 int toHexSmall(int d);
 int _toocta(int d);
-
+int conv_r(char *str);
+int _strlen(char *str);
 #endif
