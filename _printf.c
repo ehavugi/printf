@@ -21,7 +21,7 @@ int _printf(const char *str, ...)
 	{
 		if (str[index] == '%')
 		{
-			if (str[index+1] == 'd' || str[index+1] == 'i')
+			if (str[index+1] == 'd' || str[index+1] == 'i' || str[index+1] == 'u')
 			{
 				len += print_int(va_arg(ptr,int));
 				index += 2;
@@ -30,6 +30,32 @@ int _printf(const char *str, ...)
 			{
 				_putchar(va_arg(ptr,int));
 				len++;
+				index += 2;
+			}
+			else if (str[index+1] == 'b')
+			{
+				len += _tobin(va_arg(ptr,int));
+				index += 2;
+			}
+			else if (str[index+1] == 'p')
+			{
+				pointerToHex(va_arg(ptr,int),8);
+				len += 8;
+				index += 2;
+			}
+			else if (str[index+1] == 'x')
+			{
+				len += toHexSmall(va_arg(ptr,int));
+				index += 2;
+			}
+			else if (str[index+1] == 'X')
+			{
+				len += toHexBig(va_arg(ptr,int));
+				index += 2;
+			}
+			else if (str[index+1] == 'o')
+			{
+				len += _toocta(va_arg(ptr,int));
 				index += 2;
 			}
 			else if (str[index+1] == 's' || str[index+1] == 'S')
