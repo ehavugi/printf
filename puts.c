@@ -14,6 +14,7 @@ int _puts(char *str)
 
 	while (*str != '\0')
 	{
+
 		ch = *str;
 		if (ch >= 127 || (ch > 0 && ch < 32))
 		{

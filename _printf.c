@@ -8,7 +8,7 @@
  *
  * Return: integer
  */
-int _printf(const char *str, ...)
+iint _printf(const char *str, ...)
 {
 	int index = 0;
 	int len = 0;
@@ -21,7 +21,13 @@ int _printf(const char *str, ...)
 	{
 		if (str[index] == '%')
 		{
-			if (str[index + 1] == 'd' || str[index + 1] == 'i' || str[index + 1] == 'u')
+			if (str[index + 1] == '%')
+			{
+				_putchar('%');
+				len += 1;
+				index += 2;
+			}
+			else if (str[index + 1] == 'd' || str[index + 1] == 'i' || str[index + 1] == 'u')
 			{
 				len += print_int(va_arg(ptr, int));
 				index += 2;
