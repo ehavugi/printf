@@ -1,9 +1,9 @@
 #include <unistd.h>
 
 /**
-  * _putchar - putchar 
+  * _putchar - putchar
   * @c: char
-  * 
+  *
   * Return: int
   */
 
