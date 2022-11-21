@@ -10,18 +10,10 @@ int _puts(char *str)
 	int len = 0;
 	while (*str != '\0')
 	{
-        int ch = *str;
-        if (ch >= 127 || (ch > 0 && ch < 32))
-        {
-            _putchar('\\');
-            _putchar('x');
-			len += 2;
-        }
-        else{
-            _putchar(*str + 0);
-        }
+		_putchar(*str);
 		len += 1;
 		++str;
 	}
+
 	return(len);
 }
