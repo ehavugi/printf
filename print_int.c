@@ -8,7 +8,8 @@
 int print_uint(unsigned int c)
 {
 	int count = 0;
-	if (c/10 == 0)
+
+	if (c / 10 == 0)
 	{
 		_putchar(c + '0');
 		count += 1;
@@ -23,7 +24,7 @@ int print_uint(unsigned int c)
 }
 /**
  * print_int  - print int
- * @c: int 
+ * @c: int
  *
  * Return: number of char printed
  */
@@ -31,6 +32,7 @@ int print_int(int c)
 {
 	int index = 0;
 	unsigned int d;
+
 	if (c < 0)
 	{
 		_putchar('-');

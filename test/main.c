@@ -30,8 +30,8 @@ int main(void)
     printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
     _printf("Character:[%c]\n", 'H');
     printf("Character:[%c]\n", 'H');
-    len = _printf("String:[%s]\n", "I am a string !");
-    len2 = printf("String:[%s]\n", "I am a string !");
+    len = _printf("String :[%s] %c,%c,\n", "I am a string!	23",11,130);
+    len2 = printf("String :[%s] %c,%c,\n", "I am a string!	23",11,130);
     _printf("Length 2: [%d, %i]\n", len, len);
     printf("Length 2: [%d, %i]\n", len2, len2); 
     _printf("Address:[%p]\n", addr);

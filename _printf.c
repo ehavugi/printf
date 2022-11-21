@@ -1,30 +1,26 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stdlib.h>
-
 /**
  * _printf - printf
  * @str: format string
  *
  * Return: integer
  */
-iint _printf(const char *str, ...)
+int _printf(const char *str, ...)
 {
 	int index = 0;
 	int len = 0;
 	va_list ptr;
 
 	va_start(ptr, 0);
-	/* int f_index = 0; */
-
 	while (str[index] != '\0')
 	{
 		if (str[index] == '%')
 		{
 			if (str[index + 1] == '%')
 			{
-				_putchar('%');
-				len += 1;
+				len += _putchar('%');
 				index += 2;
 			}
 			else if (str[index + 1] == 'd' || str[index + 1] == 'i' || str[index + 1] == 'u')
@@ -34,8 +30,7 @@ iint _printf(const char *str, ...)
 			}
 			else if (str[index + 1] == 'c')
 			{
-				_putchar(va_arg(ptr, int));
-				len++;
+				len += _putchar(va_arg(ptr, int));
 				index += 2;
 			}
 			else if (str[index + 1] == 'b')
@@ -71,8 +66,7 @@ iint _printf(const char *str, ...)
 			}
 			else
 			{
-				_putchar(str[index]);
-				len++;
+				len += _putchar(str[index]);
 				index += 1;
 			}
 			continue;

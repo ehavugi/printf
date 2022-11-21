@@ -10,6 +10,24 @@
 int _puts(char *str)
 {
 	int len = 0;
+
+	while (*str != '\0')
+	{
+		len += _putchar(*str + 0);
+		++str;
+	}
+	return (len);
+}
+
+/**
+ * _puts_S - print a string with %S format
+ * @str: string
+ *
+ * Return: length
+ */
+int _puts_S(char *str)
+{
+	int len = 0;
 	int ch;
 
 	while (*str != '\0')

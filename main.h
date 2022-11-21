@@ -3,6 +3,7 @@
 
 
 int _puts(char *str);
+int _puts_S(char *str);
 int _putchar(char c);
 int _printf(const char *str, ...);
 int print_uint(unsigned int c);
