@@ -1,5 +1,6 @@
 #include <limits.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
@@ -37,6 +38,9 @@ int main(void)
     
     _printf("Address:[%p]\n", addr);
     printf("Address:[%p]\n", addr);
+
+    _printf("Address 2: %p \n", NULL);
+    printf("Addresses 2: %p \n", NULL);
     
     len = _printf("Percent:[%%]\n");
     len2 = printf("Percent:[%%]\n");
@@ -49,5 +53,13 @@ int main(void)
     
     _printf("Unknown:[%r]\n");
     printf("Unknown:[%r]\n");
+    
+    _printf("binary %b\n", 98);
+    printf("binary (not suppoerted? %b\n",98);
+
+    _printf("Rot13 : %R\n","Gur Mra bs Clguba, ol Gvz Crgref");
+
+    _printf("%%S, %S \n", "I am fine thank you	");
+    printf("%%S,  %S \n", "I am fine thank you	");
     return (0);
 }

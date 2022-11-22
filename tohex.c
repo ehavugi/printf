@@ -6,10 +6,10 @@
  * Return: length
  */
 
-int toHexBig(int d)
+int toHexBig(long d)
 {
 	int len = 0;
-	int rem;
+	long rem;
 
 	if (d / 16 == 0)
 	{
@@ -50,10 +50,10 @@ int toHexBig(int d)
  * Return: length
  */
 
-int toHexSmall(int d)
+int toHexSmall(long d)
 {
 	int len = 0;
-	int rem;
+	long rem;
 
 	if (d / 16 == 0)
 	{

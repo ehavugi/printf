@@ -23,7 +23,12 @@ int _printf(const char *str, ...)
 				len += _putchar('%');
 				index += 2;
 			}
-			else if (str[index + 1] == 'd' || str[index + 1] == 'i' || str[index + 1] == 'u')
+			else if (str[index + 1] == 'u')
+			{
+				len += print_uint(va_arg(ptr,unsigned int));
+				index += 2;
+			}
+			else if (str[index + 1] == 'd' || str[index + 1] == 'i')
 			{
 				len += print_int(va_arg(ptr, int));
 				index += 2;
@@ -35,28 +40,29 @@ int _printf(const char *str, ...)
 			}
 			else if (str[index + 1] == 'b')
 			{
-				len += _tobin(va_arg(ptr, int));
+				len += _tobin(va_arg(ptr, unsigned int));
 				index += 2;
 			}
 			else if (str[index + 1] == 'p')
 			{
-				pointerToHex(va_arg(ptr, int), 8);
-				len += 8;
+				len += _putchar('0');
+				len += _putchar('x');
+				len += pointerToHex(va_arg(ptr, long), 8);
 				index += 2;
 			}
 			else if (str[index + 1] == 'x')
 			{
-				len += toHexSmall(va_arg(ptr, int));
+				len += toHexSmall(va_arg(ptr, long));
 				index += 2;
 			}
 			else if (str[index + 1] == 'X')
 			{
-				len += toHexBig(va_arg(ptr, int));
+				len += toHexBig(va_arg(ptr, long));
 				index += 2;
 			}
 			else if (str[index + 1] == 'o')
 			{
-				len += _toocta(va_arg(ptr, int));
+				len += _toocta(va_arg(ptr, long));
 				index += 2;
 			}
 			else if (str[index + 1] == 's')
@@ -64,9 +70,19 @@ int _printf(const char *str, ...)
 				len += _puts(va_arg(ptr, char*));
 				index += 2;
 			}
+			else if (str[index + 1] == 'S')
+			{
+				len += _puts_S(va_arg(ptr,char *));
+				index += 2;
+			}	
 			else if (str[index + 1] == 'r')
 			{
 				len += conv_r(va_arg(ptr, char *));
+				index += 2;
+			}
+			else if (str[index + 1] == 'R')
+			{
+				len += conv_R(va_arg(ptr, char *));
 				index += 2;
 			}
 			else

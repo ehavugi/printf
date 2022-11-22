@@ -6,7 +6,7 @@
   *
   * Return: length
   */
-int _toocta(int d)
+int _toocta(long d)
 {
 	int len = 0;
 

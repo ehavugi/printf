@@ -5,7 +5,7 @@
   * @d: the int to convert
   * Return: length
   */
-int _tobin(int d)
+int _tobin(unsigned int d)
 {
 	int len = 0;
 
