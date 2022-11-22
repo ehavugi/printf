@@ -59,7 +59,7 @@ int _print_int(unsigned int value, char format, int *index )
  *
  * Return: integer
  */
-int _printf(const char *str, ...)
+int _printf(const char *format, ...)
 {
 	int index = 0;
 	int len = 0;
@@ -67,26 +67,26 @@ int _printf(const char *str, ...)
 	char curr;
 
 	va_start(ptr, 0);
-	while (str[index] != '\0')
+	while (format[index] != '\0')
 	{
-		if (str[index] == '%')
+		if (format[index] == '%')
 		{
-			curr = str[index + 1];
-			if (str[index + 1] == '%')
+			curr = format[index + 1];
+			if (format[index + 1] == '%')
 			{
 				len += _putchar('%');
 				index += 2; }
-			else if (str[index + 1] == 'p')
+			else if (format[index + 1] == 'p')
 			{
 				len += _putchar('0');
 				len += _putchar('x');
 				len += pointerToHex(va_arg(ptr, long), 8);
 				index += 2; }
-			else if (str[index + 1] == 'd' || str[index + 1] == 'i')
+			else if (format[index + 1] == 'd' || format[index + 1] == 'i')
 			{
 				len += print_int(va_arg(ptr, int));
 				index += 2; }
-			else if (str[index + 1] == 'c')
+			else if (format[index + 1] == 'c')
 			{
 				len += _putchar((char)va_arg(ptr, unsigned int));
 				index += 2;}
@@ -98,12 +98,12 @@ int _printf(const char *str, ...)
 				len += _print_s(va_arg(ptr, char *), curr, &index); }
 			else
 			{
-				len += _putchar(str[index]);
+				len += _putchar(format[index]);
 				index += 1; }
 			continue; }
 		else
 		{
-			_putchar(str[index]);
+			_putchar(format[index]);
 			len++; }
 		index += 1; }
 	va_end(ptr);
