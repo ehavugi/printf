@@ -69,6 +69,11 @@ int _printf(const char *format, ...)
 		if (format[index] == '%')
 		{
 			curr = format[index + 1];
+			if (curr == 'l' && (format[index + 2] == 'i' || format[index + 2] == 'd' || format[index + 2] == 'x' || format[index + 2] == 'X'))
+			{
+
+				len += _print_int(va_arg(ptr, long int),format[index+2], &index); }
+
 			if (format[index + 1] == '%')
 			{
 				len += _putchar('%'); index += 2; }

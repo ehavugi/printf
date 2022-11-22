@@ -14,10 +14,7 @@ int _puts(char *str)
 	while (*str != '\0')
 	{
 		_putchar(*str + 0);
-		if (*str > 31)
-		{
-			len += 1; /*updated lenght only on print of new char*/
-		}
+		len += 1;
 		++str;
 	}
 	return (len);
