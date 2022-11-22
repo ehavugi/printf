@@ -8,9 +8,9 @@
   * Return: 0
   */
 
-int pointerToHex(long d, int len)
+int pointerToHex(unsigned long d, int len)
 {
-	int rem = (d % 16) - 10;
+	unsigned long rem = (d % 16) - 10;
 	int length = 0;
 	
 

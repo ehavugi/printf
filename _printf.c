@@ -2,11 +2,11 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-/** _print_s - print strings
- * @str: string 
+/**
+ * _print_s - print strings
+ * @str: string
  * @format: format string
- * @index: inde
- *
+ * @index: index
  * Return: char printed
  */
 
@@ -35,13 +35,13 @@ int _print_s(char *str, char format, int *index)
  * Return: int
  */
 
-int _print_int(unsigned int value, char format, int *index )
+int _print_int(unsigned int value, char format, int *index)
 {
 			int len = 0;
-	
+			
 			if (format == 'u')
 				len += print_uint(value);
-			else if (format== 'b')
+			else if (format == 'b')
 				len += _tobin(value);
 			else if (format == 'x')
 				len += toHexSmall(value);
@@ -55,16 +55,13 @@ int _print_int(unsigned int value, char format, int *index )
 
 /**
  * _printf - printf
- * @str: format string
+ * @format: format string
  *
  * Return: integer
  */
 int _printf(const char *format, ...)
 {
-	int index = 0;
-	int len = 0;
-	va_list ptr;
-	char curr;
+	int index = 0, len = 0; va_list ptr; char curr;
 
 	va_start(ptr, 0);
 	while (format[index] != '\0')
@@ -74,22 +71,21 @@ int _printf(const char *format, ...)
 			curr = format[index + 1];
 			if (format[index + 1] == '%')
 			{
-				len += _putchar('%');
-				index += 2; }
+				len += _putchar('%'); index += 2; }
 			else if (format[index + 1] == 'p')
 			{
 				len += _putchar('0');
-				len += _putchar('x');
-				len += pointerToHex(va_arg(ptr, long), 8);
-				index += 2; }
+			       	len += _putchar('x'); 
+				len += pointerToHex(va_arg(ptr, unsigned long), 8); 
+				index += 2;
+		       	}
 			else if (format[index + 1] == 'd' || format[index + 1] == 'i')
 			{
 				len += print_int(va_arg(ptr, int));
 				index += 2; }
 			else if (format[index + 1] == 'c')
 			{
-				len += _putchar((char)va_arg(ptr, unsigned int));
-				index += 2;}
+				len += _putchar((char)va_arg(ptr, unsigned int)); index += 2;}
 			else if (curr == 'i' || curr == 'o' || curr == 'X' || curr == 'x'|| curr == 'b' || curr == 'u')
 			{
 				len += _print_int(va_arg(ptr, unsigned int), curr, &index); }
@@ -98,13 +94,11 @@ int _printf(const char *format, ...)
 				len += _print_s(va_arg(ptr, char *), curr, &index); }
 			else
 			{
-				len += _putchar(format[index]);
-				index += 1; }
+				len += _putchar(format[index]); index += 1; }
 			continue; }
 		else
 		{
-			_putchar(format[index]);
-			len++; }
+			_putchar(format[index]); len++; }
 		index += 1; }
 	va_end(ptr);
 	return (len);

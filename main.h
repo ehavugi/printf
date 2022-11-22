@@ -10,7 +10,7 @@ int print_uint(unsigned int c);
 int print_int(int c);
 int _tobin(unsigned int d);
 int toHexBig(unsigned int d);
-int pointerToHex(long d, int len);
+int pointerToHex(unsigned long d, int len);
 int toHexSmall(unsigned int d);
 int _toocta(unsigned int d);
 int conv_r(char *str);
