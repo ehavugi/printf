@@ -5,7 +5,7 @@
 int _puts(char *str);
 int _puts_S(char *str);
 int _putchar(char c);
-int _printf(const char *str, ...);
+int _printf(const char *format, ...);
 int print_uint(unsigned int c);
 int print_int(int c);
 int _tobin(unsigned int d);
