@@ -6,7 +6,7 @@
   *
   * Return: length
   */
-int _toocta(long d)
+int _toocta(unsigned int d)
 {
 	int len = 0;
 
@@ -18,9 +18,9 @@ int _toocta(long d)
 	}
 	else
 	{
-		len++;
 		len += _toocta(d / 8);
 		_putchar((d % 8) + '0');
+		len += 1;
 	}
 	return (len);
 }

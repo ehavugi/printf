@@ -36,18 +36,17 @@ int _puts_S(char *str)
 		ch = *str;
 		if (ch >= 127 || (ch > 0 && ch < 32))
 		{
-			_putchar('\\');
-			_putchar('x');
+			len += _putchar('\\');
+			len += _putchar('x');
 			
-			toHexBig(ch/16);
-			toHexBig(ch%16);
-			len += 4;
+			len += toHexBig(ch/16);
+			len += toHexBig(ch%16);
 		}
 		else
 		{
 			_putchar(*str + 0);
+			len += 1;
 		}
-		len += 1;
 		++str;
 	}
 	return (len);

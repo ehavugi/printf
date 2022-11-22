@@ -18,6 +18,7 @@ int _printf(const char *str, ...)
 	{
 		if (str[index] == '%')
 		{
+
 			if (str[index + 1] == '%')
 			{
 				len += _putchar('%');
@@ -35,7 +36,7 @@ int _printf(const char *str, ...)
 			}
 			else if (str[index + 1] == 'c')
 			{
-				len += _putchar(va_arg(ptr, int));
+				len += _putchar((char)va_arg(ptr, unsigned int));
 				index += 2;
 			}
 			else if (str[index + 1] == 'b')
@@ -52,17 +53,17 @@ int _printf(const char *str, ...)
 			}
 			else if (str[index + 1] == 'x')
 			{
-				len += toHexSmall(va_arg(ptr, long));
+				len += toHexSmall(va_arg(ptr, unsigned int ));
 				index += 2;
 			}
 			else if (str[index + 1] == 'X')
 			{
-				len += toHexBig(va_arg(ptr, long));
+				len += toHexBig(va_arg(ptr, unsigned int));
 				index += 2;
 			}
 			else if (str[index + 1] == 'o')
 			{
-				len += _toocta(va_arg(ptr, long));
+				len += _toocta(va_arg(ptr, unsigned int));
 				index += 2;
 			}
 			else if (str[index + 1] == 's')

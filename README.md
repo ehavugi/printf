@@ -1,16 +1,17 @@
 # printf
-~~ strikethrought~~ : Done
-*Italics* : In progress(some work done)
+~~strikethrought~~ : Done
+
+**Bold** : In progress(some work done)
 
 ## Mandatory
-0.  *printf , %c %s %*
-1.  ~~printf %d %i ~~
+0.  **printf , %c %s %**
+1.  ~~printf %d %i~~
 # Advanced 
-2. ~~ printf %b ~~
-3. *printf u, o, x, X*
+2. ~~printf %b~~
+3. **printf u, o, x, X**
 4. buffer  of 1024 reduce number of calls to write
-5.  *printf %S*
-6.  *printf %p*
+5. **printf %S**
+6.  **printf %p**
 7.  non-custom conversion specifiers : + , space, #
 8.  length modifiers : l , h
 9.  field with for non-custom modifiers
