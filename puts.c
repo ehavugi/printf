@@ -38,7 +38,10 @@ int _puts_S(char *str)
 		{
 			_putchar('\\');
 			_putchar('x');
-			len += 2;
+			
+			toHexBig(ch/16);
+			toHexBig(ch%16);
+			len += 4;
 		}
 		else
 		{

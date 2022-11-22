@@ -23,24 +23,25 @@ int main(void)
     printf("Length:[%d, %i]\n", len2, len2);
     _printf("Negative:[%d]\n", -762534);
     printf("Negative:[%d]\n", -762534);
-    _printf("Unsigned:[%u]\n", ui);
-    printf("Unsigned:[%u]\n", ui);
-    _printf("Unsigned octal:[%o]\n", ui);
-    printf("Unsigned octal:[%o]\n", ui);
-    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    _printf("Character:[%c]\n", 'H');
-    printf("Character:[%c]\n", 'H');
+    len = _printf("Unsigned:[%u]\n", ui);
+    len2 = printf("Unsigned:[%u]\n", ui);
+
+    len = _printf("Unsigned octal:[%o] %d\n", ui, len);
+    len2 = printf("Unsigned octal:[%o] %d\n", ui, len2);
+    len = _printf("Unsigned hexadecimal:[%x, %X],%d\n", ui, ui, len);
+    len2 = printf("Unsigned hexadecimal:[%x, %X],%d\n", ui, ui, len2);
+    _printf("Character:[%c], %d\n", 'H',len);
+    printf("Character:[%c], %d\n", 'H', len2);
     len = _printf("String :[%s] %c,%c,\n", "I am a string!	23",11,130);
     len2 = printf("String :[%s] %c,%c,\n", "I am a string!	23",11,130);
     _printf("Length 2: [%d, %i]\n", len, len);
     printf("Length 2: [%d, %i]\n", len2, len2); 
     
-    _printf("Address:[%p]\n", addr);
-    printf("Address:[%p]\n", addr);
+    len  = _printf("Address:[%p]\n", addr);
+    len2 = printf("Address:[%p]\n", addr);
 
-    _printf("Address 2: %p \n", NULL);
-    printf("Addresses 2: %p \n", NULL);
+    _printf("Address 2: %p %d\n", NULL, len);
+    printf("Addresses 2: %p , %d\n", NULL,len2);
     
     len = _printf("Percent:[%%]\n");
     len2 = printf("Percent:[%%]\n");
@@ -59,7 +60,7 @@ int main(void)
 
     _printf("Rot13 : %R\n","Gur Mra bs Clguba, ol Gvz Crgref");
 
-    _printf("%%S, %S \n", "I am fine thank you	");
+    _printf("%%S, %S \n", "I am fine. \n thank you	");
     printf("%%S,  %S \n", "I am fine thank you	");
     return (0);
 }
