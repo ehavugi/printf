@@ -13,26 +13,16 @@
 int _print_s(char *str, char format, int *index)
 {
 			int len = 0;
+
 			if (format == 's')
-			{
 				len += _puts(str);
-				*index += 2;
-			}
 			else if (format == 'S')
-			{
 				len += _puts_S(str);
-				*index += 2;
-			}	
 			else if (format == 'r')
-			{
 				len += conv_r(str);
-				*index += 2;
-			}
 			else if (format == 'R')
-			{
 				len += conv_R(str);
-				*index += 2;
-			}
+			*index += 2;
 		return (len);
 }
 
@@ -48,32 +38,18 @@ int _print_s(char *str, char format, int *index)
 int _print_int(unsigned int value, char format, int *index )
 {
 			int len = 0;
+	
 			if (format == 'u')
-			{
 				len += print_uint(value);
-				*index += 2;
-			}
 			else if (format== 'b')
-			{
 				len += _tobin(value);
-				*index += 2;
-			}
-		
 			else if (format == 'x')
-			{
 				len += toHexSmall(value);
-				*index += 2;
-			}
 			else if (format == 'X')
-			{
 				len += toHexBig(value);
-				*index += 2;
-			}
 			else if (format == 'o')
-			{
 				len += _toocta(value);
-				*index += 2;
-			}
+			*index += 2;
 			return (len);
 }
 
