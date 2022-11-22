@@ -10,7 +10,7 @@
 
 int pointerToHex(long d, int len)
 {
-	int rem;
+	int rem = (d % 16) - 10;
 	int length = 0;
 	
 
@@ -18,14 +18,9 @@ int pointerToHex(long d, int len)
 	{
 	
 		if (d % 16 > 9)
-		{
-			rem = (d % 16) - 10;
 			_putchar(rem + 'a');
-		}
 		else
-		{
 			_putchar((d % 16) + '0');
-		}
 		length += 1;
 		return (length);
 	}
@@ -33,14 +28,9 @@ int pointerToHex(long d, int len)
 	{
 		length += pointerToHex(d / 16, --len);
 		if (d % 16 > 9)
-		{
-			rem = (d % 16) - 10;
 			_putchar(rem + 'a');
-		}
 		else
-		{
 			_putchar((d % 16) + '0');
-		}
 		length += 1;
 	}
 	return (length);
