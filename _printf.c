@@ -1,6 +1,82 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stdlib.h>
+
+/** _print_s - print strings
+ * @str: string 
+ * @format: format string
+ * @index: inde
+ *
+ * Return: char printed
+ */
+
+int _print_s(char *str, char format, int *index)
+{
+			int len = 0;
+			if (format == 's')
+			{
+				len += _puts(str);
+				*index += 2;
+			}
+			else if (format == 'S')
+			{
+				len += _puts_S(str);
+				*index += 2;
+			}	
+			else if (format == 'r')
+			{
+				len += conv_r(str);
+				*index += 2;
+			}
+			else if (format == 'R')
+			{
+				len += conv_R(str);
+				*index += 2;
+			}
+		return (len);
+}
+
+/**
+ * _print_int - print integers
+ * @value: int
+ * @format: format
+ * @index: index
+ *
+ * Return: int
+ */
+
+int _print_int(unsigned int value, char format, int *index )
+{
+			int len = 0;
+			if (format == 'u')
+			{
+				len += print_uint(value);
+				*index += 2;
+			}
+			else if (format== 'b')
+			{
+				len += _tobin(value);
+				*index += 2;
+			}
+		
+			else if (format == 'x')
+			{
+				len += toHexSmall(value);
+				*index += 2;
+			}
+			else if (format == 'X')
+			{
+				len += toHexBig(value);
+				*index += 2;
+			}
+			else if (format == 'o')
+			{
+				len += _toocta(value);
+				*index += 2;
+			}
+			return (len);
+}
+
 /**
  * _printf - printf
  * @str: format string
@@ -12,94 +88,48 @@ int _printf(const char *str, ...)
 	int index = 0;
 	int len = 0;
 	va_list ptr;
+	char curr;
 
 	va_start(ptr, 0);
 	while (str[index] != '\0')
 	{
 		if (str[index] == '%')
 		{
-
+			curr = str[index + 1];
 			if (str[index + 1] == '%')
 			{
 				len += _putchar('%');
-				index += 2;
-			}
-			else if (str[index + 1] == 'u')
-			{
-				len += print_uint(va_arg(ptr,unsigned int));
-				index += 2;
-			}
-			else if (str[index + 1] == 'd' || str[index + 1] == 'i')
-			{
-				len += print_int(va_arg(ptr, int));
-				index += 2;
-			}
-			else if (str[index + 1] == 'c')
-			{
-				len += _putchar((char)va_arg(ptr, unsigned int));
-				index += 2;
-			}
-			else if (str[index + 1] == 'b')
-			{
-				len += _tobin(va_arg(ptr, unsigned int));
-				index += 2;
-			}
+				index += 2; }
 			else if (str[index + 1] == 'p')
 			{
 				len += _putchar('0');
 				len += _putchar('x');
 				len += pointerToHex(va_arg(ptr, long), 8);
-				index += 2;
-			}
-			else if (str[index + 1] == 'x')
+				index += 2; }
+			else if (str[index + 1] == 'd' || str[index + 1] == 'i')
 			{
-				len += toHexSmall(va_arg(ptr, unsigned int ));
-				index += 2;
-			}
-			else if (str[index + 1] == 'X')
+				len += print_int(va_arg(ptr, int));
+				index += 2; }
+			else if (str[index + 1] == 'c')
 			{
-				len += toHexBig(va_arg(ptr, unsigned int));
-				index += 2;
-			}
-			else if (str[index + 1] == 'o')
+				len += _putchar((char)va_arg(ptr, unsigned int));
+				index += 2;}
+			else if (curr == 'i' || curr == 'o' || curr == 'X' || curr == 'x'|| curr == 'b' || curr == 'u')
 			{
-				len += _toocta(va_arg(ptr, unsigned int));
-				index += 2;
-			}
-			else if (str[index + 1] == 's')
+				len += _print_int(va_arg(ptr, unsigned int), curr, &index); }
+			else if (curr == 's' || curr == 'S' || curr == 'r' || curr == 'R')
 			{
-				len += _puts(va_arg(ptr, char*));
-				index += 2;
-			}
-			else if (str[index + 1] == 'S')
-			{
-				len += _puts_S(va_arg(ptr,char *));
-				index += 2;
-			}	
-			else if (str[index + 1] == 'r')
-			{
-				len += conv_r(va_arg(ptr, char *));
-				index += 2;
-			}
-			else if (str[index + 1] == 'R')
-			{
-				len += conv_R(va_arg(ptr, char *));
-				index += 2;
-			}
+				len += _print_s(va_arg(ptr, char *), curr, &index); }
 			else
 			{
 				len += _putchar(str[index]);
-				index += 1;
-			}
-			continue;
-		}
+				index += 1; }
+			continue; }
 		else
 		{
-			/*What to print when no format strings embeded %s */
 			_putchar(str[index]);
-			len++;
-		}
-		index += 1;
-	}
+			len++; }
+		index += 1; }
+	va_end(ptr);
 	return (len);
 }
